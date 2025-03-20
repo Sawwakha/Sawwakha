@@ -1,0 +1,1590 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سوّقها صح - التسويق الفعال والبسيط</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+‎    <!-- إضافة مكتبة Markdown للتنسيق -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#7A7BE0',
+                        accent: '#FF6B6B',
+                        dark: {
+                            bg: '#181818',
+                            card: '#222222',
+                            accent: '#323232'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+        
+        * {
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #5D5CDE 0%, #8F8EE8 100%);
+        }
+        
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #4a49b7 0%, #7271c5 100%);
+        }
+        
+        .loader {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #5D5CDE;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        .dark .loader {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #5D5CDE;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .dark .card-hover:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        
+‎        /* تنسيق الردود المُصاغة بـ Markdown */
+        .markdown-content h1, .markdown-content h2, .markdown-content h3,
+        .markdown-content h4, .markdown-content h5, .markdown-content h6 {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .markdown-content h1 { font-size: 1.5rem; }
+        .markdown-content h2 { font-size: 1.3rem; }
+        .markdown-content h3 { font-size: 1.2rem; }
+        
+        .markdown-content ul, .markdown-content ol {
+            padding-right: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .markdown-content ul { list-style-type: disc; }
+        .markdown-content ol { list-style-type: decimal; }
+        
+        .markdown-content p {
+            margin-bottom: 0.75rem;
+        }
+                .markdown-content a {
+            color: #5D5CDE;
+            text-decoration: underline;
+        }
+        
+        .markdown-content blockquote {
+            border-right: 4px solid #5D5CDE;
+            padding-right: 1rem;
+            margin-right: 0;
+            margin-left: 0;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        
+        .dark .markdown-content blockquote {
+            color: #aaa;
+        }
+        
+        .markdown-content pre {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            overflow-x: auto;
+        }
+        
+        .dark .markdown-content pre {
+            background-color: #333;
+        }
+        
+        .markdown-content code {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+        }
+                
+        .dark .markdown-content code {
+            background-color: #333;
+        }
+        
+        .btn-bounce:active {
+            transform: scale(0.97);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-dark-bg text-gray-800 dark:text-gray-100">
+    <!-- Navbar -->
+    <nav class="fixed w-full top-0 z-50 bg-white dark:bg-dark-card shadow-md">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <h1 class="text-2xl font-bold text-primary">سوّقها صح</h1>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-4 space-x-reverse">
+                    <a href="#home" class="px-3 py-2 rounded-md text-lg font-medium hover:text-primary transition-colors">الرئيسية</a>
+                    <a href="#services" class="px-3 py-2 rounded-md text-lg font-medium hover:text-primary transition-colors">الخدمات</a>
+                    <a href="#contact" class="px-3 py-2 rounded-md text-lg font-medium hover:text-primary transition-colors">اتصل بنا</a>
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-300"></i>
+                    </button>
+                </div>
+                <div class="flex md:hidden items-center">
+
+                    <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i class="fas fa-bars text-gray-600 dark:text-gray-200"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-dark-card shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">الرئيسية</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">الخدمات</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">اتصل بنا</a>
+                <button id="mobile-theme-toggle" class="w-full text-right px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <i class="fas fa-moon dark:hidden ml-2"></i>
+                    <i class="fas fa-sun hidden dark:block ml-2"></i>
+                    <span class="dark:hidden">الوضع الداكن</span>
+                    <span class="hidden dark:block">الوضع الفاتح</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="pt-16">
+        <!-- Hero Section - Home -->
+        <section id="home" class="min-h-screen flex items-center">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="flex flex-col lg:flex-row gap-8 items-center">
+                    <div class="w-full lg:w-1/2 text-center lg:text-right">
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight">
+‎                            سوّق مشروعك 
+                            <span class="text-primary">بأبسط الطرق</span>
+                        </h1>
+                        <p class="mt-4 text-xl md:text-2xl text-gray-600 dark:text-gray-300">
+‎                            سوّق مشروعك بأبسط الطرق ووصله للجمهور المناسب!
+
+                        </p>
+                        <div class="mt-8">
+                            <a href="#services" class="gradient-bg text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transition duration-300 inline-block btn-bounce">
+‎                                ابدأ الآن
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2">
+                        <div class="relative">
+                            <!-- An SVG illustration instead of an external image -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" class="w-full h-auto">
+                                <style>
+                                    .st0{fill:#F3F3F3}.st1{fill:#FFFFFF}.st2{fill:#5D5CDE}.st3{fill:#8F8EE8}
+                                    .st4{fill:#FFD7D7}.st5{fill:#FF6B6B}.st6{fill:#E0E0E0}
+                                </style>
+                                <circle class="st0" cx="250" cy="200" r="180"/>
+
+                                <rect class="st1" x="140" y="100" width="220" height="180" rx="8" ry="8"/>
+                                <rect class="st6" x="160" y="130" width="180" height="10" rx="2" ry="2"/>
+                                <rect class="st6" x="160" y="150" width="140" height="10" rx="2" ry="2"/>
+                                <rect class="st2" x="160" y="180" width="60" height="40" rx="4" ry="4"/>
+                                <rect class="st3" x="230" y="180" width="60" height="40" rx="4" ry="4"/>
+                                
+                                <circle class="st2" cx="340" cy="120" r="30"/>
+                                <circle class="st4" cx="380" cy="200" r="40"/>
+                                <circle class="st5" cx="150" cy="260" r="25"/>
+                                
+                                <g transform="translate(300, 260)">
+                                    <rect class="st3" x="-20" y="-20" width="80" height="80" rx="8" ry="8"/>
+                                    <rect class="st1" x="0" y="0" width="40" height="5" rx="2" ry="2"/>
+                                    <rect class="st1" x="0" y="15" width="30" height="5" rx="2" ry="2"/>
+                                    <rect class="st1" x="0" y="30" width="20" height="5" rx="2" ry="2"/>
+                                </g>
+
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Features -->
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white dark:bg-dark-card rounded-xl shadow-md p-6 card-hover">
+                        <div class="w-14 h-14 rounded-full gradient-bg flex items-center justify-center mb-4">
+                            <i class="fas fa-bullhorn text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">إعلانات فعالة</h3>
+                        <p class="text-gray-600 dark:text-gray-300">صمم إعلانات تسويقية احترافية بمساعدة الذكاء الاصطناعي</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-dark-card rounded-xl shadow-md p-6 card-hover">
+                        <div class="w-14 h-14 rounded-full gradient-bg flex items-center justify-center mb-4">
+                            <i class="fas fa-chart-line text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">نمو سريع</h3>
+                        <p class="text-gray-600 dark:text-gray-300">ساعد مشروعك على النمو باستراتيجيات تسويق بسيطة وفعالة</p>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-dark-card rounded-xl shadow-md p-6 card-hover">
+                        <div class="w-14 h-14 rounded-full gradient-bg flex items-center justify-center mb-4">
+                            <i class="fas fa-lightbulb text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">أفكار مميزة</h3>
+                        <p class="text-gray-600 dark:text-gray-300">احصل على أفكار تسويقية مبتكرة تناسب مجال عملك وميزانيتك</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="min-h-screen py-16 bg-gray-100 dark:bg-dark-accent">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">خدماتنا</h2>
+                    <p class="mt-4 text-xl text-gray-600 dark:text-gray-300">حلول تسويقية بسيطة لمساعدة مشروعك على النمو</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Ad Creation Service -->
+                    <div class="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center">
+                                    <i class="fas fa-ad text-xl text-white"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mr-4">إنشاء إعلان تسويقي</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
+‎                                أدخل معلومات مشروعك وسنساعدك في صياغة إعلان احترافي يجذب العملاء المستهدفين.
+                            </p>
+                            
+                            <form id="ad-form" class="space-y-4">
+                                <div>
+                                    <label class="block mb-2 font-medium">اسم المشروع</label>
+                                    <input type="text" id="project-name" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 text-base" placeholder="مثال: متجر رولز" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="block mb-2 font-medium">مجال المشروع</label>
+                                    <select id="project-category" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 text-base" required>
+                                        <option value="">اختر مجال المشروع</option>
+                                        <option value="food">مطاعم وكافيهات</option>
+                                        <option value="fashion">أزياء وملابس</option>
+                                        <option value="tech">تقنية وإلكترونيات</option>
+                                        <option value="health">صحة وتجميل</option>
+                                        <option value="education">تعليم وتدريب</option>
+                                        <option value="other">مجال آخر</option>
+                                    </select>
+                                </div>
+                                
+                                <div id="other-category-container" class="hidden">
+                                    <label class="block mb-2 font-medium">حدد المجال</label>
+                                    <input type="text" id="other-category" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 text-base" placeholder="أدخل مجال مشروعك">
+                                </div>
+                                
+                                <div>
+                                    <label class="block mb-2 font-medium">منصة النشر</label>
+                                    <select id="ad-platform" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 text-base" required>
+                                        <option value="">اختر منصة النشر</option>
+                                        <option value="social">وسائل التواصل الاجتماعي</option>
+                                        <option value="email">البريد الإلكتروني</option>
+                                        <option value="website">موقع إلكتروني</option>
+                                        <option value="sms">رسائل نصية</option>
+                                        <option value="print">مطبوعات</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block mb-2 font-medium">وصف المشروع</label>
+                                    <textarea id="project-description" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 text-base" rows="3" placeholder="أدخل وصفًا مختصرًا لمشروعك، خدماته، وما يميزه" required></textarea>
+                                </div>
+                                
+                                <div>
+                                    <label class="block mb-2 font-medium">الجمهور المستهدف</label>
+                                    <select id="audience-type" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 text-base" required>
+                                        <option value="">اختر الجمهور المستهدف</option>
+                                        <option value="youth">الشباب</option>
+                                        <option value="families">العائلات</option>
+                                        <option value="women">النساء</option>
+                                        <option value="men">الرجال</option>
+                                        <option value="professionals">أصحاب المهن</option>
+                                        <option value="students">الطلاب</option>
+                                        <option value="general">عام</option>
+                                        <option value="custom">تحديد فئة مخصصة</option>
+                                    </select>
+                                </div>
+                                
+                                <div id="custom-audience-container" class="hidden">
+                                    <label class="block mb-2 font-medium">حدد الجمهور المستهدف</label>
+                                    <input type="text" id="custom-audience" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 text-base" placeholder="أدخل وصف الجمهور المستهدف">
+                                </div>
+                                
+                                <button type="submit" class="w-full gradient-bg text-white font-bold py-3 px-6 rounded-lg transition-all hover:shadow-lg btn-bounce">
+‎                                    إنشاء الإعلان
+                                </button>
+                            </form>
+                            
+                            <div id="ad-result" class="mt-6 p-4 border border-gray-300 dark:border-gray-600 rounded-lg hidden">
+                                <div id="ad-loading" class="flex flex-col items-center justify-center py-8">
+                                    <div class="loader mb-4"></div>
+                                    <p>جاري إنشاء الإعلان... <span id="ad-typing-dots">.</span></p>
+                                </div>
+                                
+                                <div id="ad-content" class="hidden">
+                                    <h4 class="text-lg font-bold mb-2">الإعلان المقترح:</h4>
+                                    <div id="ad-text" class="markdown-content p-4 bg-gray-50 dark:bg-gray-800 rounded"></div>
+                                    
+                                    <div class="flex justify-end mt-4">
+                                        <button id="copy-ad" class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 py-2 px-4 rounded-lg transition-all btn-bounce">
+                                            <i class="far fa-copy ml-1"></i>نسخ
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div id="ad-error" class="hidden">
+                                    <div class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100 p-4 rounded">
+                                        <p class="flex items-center">
+                                            <i class="fas fa-exclamation-circle ml-2"></i>
+                                            <span id="ad-error-message">حدث خطأ أثناء إنشاء الإعلان. يرجى المحاولة مرة أخرى.</span>
+                                        </p>
+                                    </div>
+                                    <div class="flex justify-end mt-4">
+                                        <button id="ad-retry" class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 py-2 px-4 rounded-lg transition-all btn-bounce">
+                                            <i class="fas fa-redo ml-1"></i>إعادة المحاولة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Marketing Ideas Service -->
+                    <div class="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center">
+                                    <i class="fas fa-lightbulb text-xl text-white"></i>
+                                </div>
+                                <h3 class="text-xl font-bold mr-4">أفكار تسويقية سريعة</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6">
+‎                                اختر مجال مشروعك وسنقدم لك أفكارًا تسويقية مبتكرة وسهلة التطبيق.
+                            </p>
+                            
+                            <form id="ideas-form" class="space-y-4">
+                                <div>
+                                    <label class="block mb-2 font-medium">مجال المشروع</label>
+                                    <select id="ideas-category" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 text-base" required>
+                                        <option value="">اختر مجال المشروع</option>
+                                        <option value="food">مطاعم وكافيهات</option>
+                                        <option value="fashion">أزياء وملابس</option>
+                                        <option value="tech">تقنية وإلكترونيات</option>
+                                        <option value="health">صحة وتجميل</option>
+                                        <option value="education">تعليم وتدريب</option>
+                                        <option value="other">مجال آخر</option>
+                                    </select>
+                                </div>
+                                
+                                <div id="ideas-other-category-container" class="hidden">
+                                    <label class="block mb-2 font-medium">حدد المجال</label>
+                                    <input type="text" id="ideas-other-category" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 text-base" placeholder="أدخل مجال مشروعك">
+                                </div>
+                                
+                                <div>
+                                    <label class="block mb-2 font-medium">هدف الحملة التسويقية</label>
+                                    <select id="marketing-goal" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 text-base" required>
+                                        <option value="">اختر هدف الحملة</option>
+                                        <option value="awareness">زيادة الوعي بالعلامة التجارية</option>
+                                        <option value="leads">جذب عملاء محتملين</option>
+                                        <option value="sales">زيادة المبيعات</option>
+                                        <option value="loyalty">تعزيز ولاء العملاء</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block mb-2 font-medium">الميزانية التقريبية</label>
+                                    <select id="budget" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 text-base" required>
+                                        <option value="">اختر الميزانية</option>
+                                        <option value="low">ميزانية منخفضة (أقل من 1000 ريال)</option>
+                                        <option value="medium">ميزانية متوسطة (1000-5000 ريال)</option>
+                                        <option value="high">ميزانية عالية (أكثر من 5000 ريال)</option>
+                                    </select>
+                                </div>
+                                
+                                <button type="submit" class="w-full gradient-bg text-white font-bold py-3 px-6 rounded-lg transition-all hover:shadow-lg btn-bounce">
+‎                                    اقتراح أفكار
+                                </button>
+                            </form>
+                            
+                            <div id="ideas-result" class="mt-6 p-4 border border-gray-300 dark:border-gray-600 rounded-lg hidden">
+                                <div id="ideas-loading" class="flex flex-col items-center justify-center py-8">
+                                    <div class="loader mb-4"></div>
+                                    <p>جاري اقتراح الأفكار... <span id="ideas-typing-dots">.</span></p>
+                                </div>
+                                
+                                <div id="ideas-content" class="hidden">
+                                    <h4 class="text-lg font-bold mb-2">الأفكار المقترحة:</h4>
+                                    <div id="ideas-text" class="markdown-content p-4 bg-gray-50 dark:bg-gray-800 rounded"></div>
+                                    
+                                    <div class="flex justify-end mt-4">
+                                        <button id="copy-ideas" class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 py-2 px-4 rounded-lg transition-all btn-bounce">
+                                            <i class="far fa-copy ml-1"></i>نسخ
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div id="ideas-error" class="hidden">
+                                    <div class="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100 p-4 rounded">
+                                        <p class="flex items-center">
+                                            <i class="fas fa-exclamation-circle ml-2"></i>
+                                            <span id="ideas-error-message">حدث خطأ أثناء اقتراح الأفكار. يرجى المحاولة مرة أخرى.</span>
+                                        </p>
+                                    </div>
+                                    <div class="flex justify-end mt-4">
+                                        <button id="ideas-retry" class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 py-2 px-4 rounded-lg transition-all btn-bounce">
+                                            <i class="fas fa-redo ml-1"></i>إعادة المحاولة
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">اتصل بنا</h2>
+                    <p class="mt-4 text-xl text-gray-600 dark:text-gray-300">نحن هنا لمساعدتك في تطوير استراتيجية التسويق الخاصة بمشروعك</p>
+                </div>
+                                
+                <div class="max-w-2xl mx-auto">
+                    <div class="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
+                        <div class="p-6">
+                            <form id="contact-form" class="space-y-4">
+                                <div>
+                                    <label class="block mb-2 font-medium">الاسم</label>
+                                    <input type="text" id="contact-name" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 text-base" placeholder="أدخل اسمك الكامل" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="block mb-2 font-medium">البريد الإلكتروني</label>
+                                    <input type="email" id="contact-email" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 text-base" placeholder="أدخل بريدك الإلكتروني" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="block mb-2 font-medium">الموضوع</label>
+                                    <input type="text" id="contact-subject" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 text-base" placeholder="أدخل موضوع الرسالة" required>
+                                </div>
+                                
+                                <div>
+                                    <label class="block mb-2 font-medium">الرسالة</label>
+                                    <textarea id="contact-message" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-800 text-base" rows="4" placeholder="أدخل رسالتك هنا" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="w-full gradient-bg text-white font-bold py-3 px-6 rounded-lg transition-all hover:shadow-lg btn-bounce">
+‎                                    إرسال الرسالة
+
+                                </button>
+                            </form>
+                            
+                            <div id="contact-success" class="hidden mt-4 p-4 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 rounded-lg">
+                                <p class="flex items-center">
+                                    <i class="fas fa-check-circle ml-2"></i>
+                                    <span>تم إرسال رسالتك بنجاح، سنتواصل معك قريبًا!</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Social Media Links -->
+                    <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <a href="#" class="bg-white dark:bg-dark-card rounded-xl shadow-md p-4 text-center card-hover">
+                            <i class="fab fa-twitter text-2xl text-primary mb-2"></i>
+                            <p class="text-gray-600 dark:text-gray-300">تابعنا على تويتر</p>
+                        </a>
+                        
+                        <a href="#" class="bg-white dark:bg-dark-card rounded-xl shadow-md p-4 text-center card-hover">
+                            <i class="fab fa-instagram text-2xl text-primary mb-2"></i>
+
+                            <p class="text-gray-600 dark:text-gray-300">تابعنا على انستجرام</p>
+                        </a>
+                        
+                        <a href="#" class="bg-white dark:bg-dark-card rounded-xl shadow-md p-4 text-center card-hover">
+                            <i class="fab fa-linkedin text-2xl text-primary mb-2"></i>
+                            <p class="text-gray-600 dark:text-gray-300">تابعنا على لينكد إن</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+
+    <footer class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h2 class="text-2xl font-bold">سوّقها صح</h2>
+                    <p class="mt-2">سوّق مشروعك بأبسط الطرق</p>
+                </div>
+                
+                <div class="flex space-x-4 space-x-reverse">
+                    <a href="#" class="hover:text-gray-200 transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                    <a href="#" class="hover:text-gray-200 transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="hover:text-gray-200 transition-colors">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <p>جميع الحقوق محفوظة &copy; سوّقها صح 2023</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        // التحقق من وجود واجهة برمجة Poe والسماح بوضع التطوير المحلي
+        const isPoeEnvironment = typeof window.Poe !== 'undefined';
+        
+        // تعريف وضع المحاكاة للاختبار المحلي
+        const LOCAL_MODE = !isPoeEnvironment;
+        
+        // إذا كنا في بيئة محلية، إنشاء كائن Poe وهمي مع محرك محاكاة للذكاء الاصطناعي
+        if (LOCAL_MODE) {
+            console.log("تشغيل في وضع الاختبار المحلي مع محاكاة ذكاء اصطناعي متقدمة.");
+            
+            // الكلمات الإيجابية الشائعة في الإعلانات
+            const positiveWords = [
+                "مميز", "رائع", "فاخر", "استثنائي", "متميز", "عالي الجودة", "فريد", "حصري", 
+                "مبتكر", "عصري", "تجربة فريدة", "لا مثيل له", "أفضل", "مُتقن", "محترف",
+                "موثوق", "سريع", "فعّال", "مضمون", "ممتاز", "راقي", "هائل", "مذهل", "مدهش"
+            ];
+            
+            // كلمات الدعوة للعمل الشائعة
+            const ctaWords = [
+                "زورونا اليوم", "احجز الآن", "اتصل بنا", "تواصل معنا", "اطلب الآن", 
+                "اغتنم الفرصة", "لا تفوت العرض", "سارع بالتجربة", "تصفح منتجاتنا",
+                "انضم إلينا", "اكتشف المزيد", "احصل على تجربة استثنائية", "كن جزءًا من عملائنا المميزين"
+            ];
+            
+            // استراتيجيات تسويقية حسب المجال
+            const strategiesByDomain = {
+                food: [
+                    "عروض الوجبات المميزة", "تجربة طعام تفاعلية", "برنامج ولاء للعملاء المتكررين",
+                    "مناسبات طهي خاصة", "توصيل مجاني", "قائمة طعام موسمية", "عروض الطلبات الجماعية",
+                    "تعاون مع مؤثرين محليين", "أمسيات تذوق خاصة", "نظام نقاط وهدايا"
+                ],
+                fashion: [
+                    "عروض تخفيضات موسمية", "برنامج ولاء VIP", "عروض خاصة بمناسبات محددة",
+                    "عروض الإحالة", "أزياء حصرية محدودة", "عرض قطع الموضة الأسبوعية", 
+                    "تعاون مع مصممين محليين", "عروض مجموعات كاملة", "هدايا مع كل عملية شراء"
+                ],
+                tech: [
+                    "برامج الضمان الممتدة", "عروض الصيانة الدورية", "ورش تدريبية مجانية",
+                    "تحديثات مجانية", "استبدال الأجهزة القديمة", "برامج الدعم الفني المميزة",
+                    "مجتمع تقني للمستخدمين", "ندوات تقنية", "دورات تدريبية احترافية"
+                ],
+                health: [
+                    "استشارات مجانية", "حزم العناية المتكاملة", "برامج المتابعة الدورية",
+                    "عروض العلاجات المتعددة", "حزم خاصة للعائلات", "عضويات شهرية/سنوية",
+                    "ورش توعوية", "تطبيق خاص للمتابعة", "مسابقات التحدي الصحي"
+                ],
+                education: [
+                    "دورات تجريبية مجانية", "برامج الطلاب المتميزين", "خطط دفع ميسرة",
+                    "دروس إضافية مجانية", "شهادات معتمدة", "برامج دراسية مكثفة",
+                    "مجموعات دراسية تفاعلية", "برامج التبادل الثقافي", "منح دراسية"
+                ],
+                other: [
+                    "برامج العملاء المميزين", "عروض خاصة للزوار الجدد", "حزم خدمات متكاملة",
+                    "خصومات الإحالة", "مناسبات خاصة", "عروض موسمية", "اشتراكات شهرية",
+                    "عروض الباقات", "استشارات مجانية", "برامج الولاء"
+                ]
+            };
+            
+            // استخراج معلومات الطلب من سلسلة الطلب المقدمة
+            function extractPromptData(prompt) {
+                // تحديد نوع الطلب (إعلان أو أفكار تسويقية)
+                const isAdRequest = prompt.includes("إعلان تسويقي") || prompt.includes("اكتب لي إعلانًا");
+                const isIdeasRequest = prompt.includes("أفكار تسويقية") || prompt.includes("اقترح لي");
+                
+                // استخراج المعلومات الأساسية
+                let data = {
+                    isAdRequest: isAdRequest,
+                    isIdeasRequest: isIdeasRequest,
+                    projectName: "",
+                    projectCategory: "",
+                    projectDescription: "",
+                    targetAudience: "",
+                    marketingGoal: "",
+                    budget: "",
+                    adPlatform: ""
+                };
+                
+                // استخراج اسم المشروع
+                const projectNameMatch = prompt.match(/اسم المشروع: ([^\n]+)/);
+                if (projectNameMatch) {
+                    data.projectName = projectNameMatch[1].trim();
+                }
+                
+                // استخراج مجال المشروع
+                const categoryMatch = prompt.match(/مجال المشروع: ([^\n]+)/);
+                if (categoryMatch) {
+                    data.projectCategory = categoryMatch[1].trim();
+                }
+                
+                // استخراج وصف المشروع
+                const descriptionMatch = prompt.match(/وصف المشروع: ([^\n]+)/);
+                if (descriptionMatch) {
+                    data.projectDescription = descriptionMatch[1].trim();
+                }
+                
+                // استخراج الجمهور المستهدف
+                const audienceMatch = prompt.match(/الجمهور المستهدف: ([^\n]+)/);
+                if (audienceMatch) {
+                    data.targetAudience = audienceMatch[1].trim();
+                }
+                
+                // استخراج منصة النشر
+                const platformMatch = prompt.match(/منصة النشر: ([^\n]+)/);
+                if (platformMatch) {
+                    data.adPlatform = platformMatch[1].trim();
+                }
+                
+                // استخراج هدف الحملة التسويقية
+                const goalMatch = prompt.match(/هدف الحملة التسويقية: ([^\n]+)/);
+                if (goalMatch) {
+                    data.marketingGoal = goalMatch[1].trim();
+                }
+                
+                // استخراج الميزانية التقريبية
+                const budgetMatch = prompt.match(/الميزانية التقريبية: ([^\n]+)/);
+                if (budgetMatch) {
+                    data.budget = budgetMatch[1].trim();
+                }
+                
+                return data;
+            }
+            
+            // إنشاء محتوى ديناميكي بناءً على معلومات المستخدم ونسبة الاكتمال
+            function generateDynamicContent(promptData, completionRatio) {
+                if (promptData.isAdRequest) {
+                    return generateDynamicAd(promptData, completionRatio);
+                } else if (promptData.isIdeasRequest) {
+                    return generateDynamicIdeas(promptData, completionRatio);
+                } else {
+                    return "عذرًا، لم أتمكن من فهم طلبك. يرجى تقديم المزيد من المعلومات.";
+                }
+            }
+            
+            // إنشاء إعلان ديناميكي بناءً على بيانات المستخدم
+            function generateDynamicAd(data, completionRatio) {
+                // إذا كانت المرحلة المبكرة من الإكمال، عرض محتوى جزئي
+                if (completionRatio < 0.5) {
+                    return `# ${data.projectName || "مشروعنا المميز"}
+
+جاري صياغة إعلان مميز...`;
+                }
+                
+                // تحديد لهجة الإعلان والكلمات المفتاحية بناء على مجال المشروع
+                let tone = "حماسي";
+                let keywords = [];
+                let domain = "";
+                
+                // تحديد المجال والكلمات المناسبة
+                if (data.projectCategory.includes("مطاعم") || data.projectCategory.includes("كافيهات") || data.projectCategory.includes("food")) {
+                    domain = "food";
+                    keywords = ["لذيذ", "شهي", "طازج", "نكهة", "مذاق", "وجبات", "أطباق", "مأكولات"];
+                    tone = "شهي";
+                } else if (data.projectCategory.includes("أزياء") || data.projectCategory.includes("ملابس") || data.projectCategory.includes("fashion")) {
+                    domain = "fashion";
+                    keywords = ["أناقة", "موضة", "عصري", "ستايل", "أزياء", "تشكيلة", "مجموعة", "تصميم"];
+                    tone = "أنيق";
+                } else if (data.projectCategory.includes("تقنية") || data.projectCategory.includes("إلكترونيات") || data.projectCategory.includes("tech")) {
+                    domain = "tech";
+                    keywords = ["متطور", "تقني", "ذكي", "حديث", "إبداع", "ابتكار", "تطوير", "حلول"];
+                    tone = "تقني";
+                } else if (data.projectCategory.includes("صحة") || data.projectCategory.includes("تجميل") || data.projectCategory.includes("health")) {
+                    domain = "health";
+                    keywords = ["صحي", "طبيعي", "نقي", "عناية", "جمال", "راحة", "علاج", "رعاية"];
+                    tone = "هادئ";
+                } else if (data.projectCategory.includes("تعليم") || data.projectCategory.includes("تدريب") || data.projectCategory.includes("education")) {
+                    domain = "education";
+                    keywords = ["تعليم", "معرفة", "تطوير", "مهارات", "خبرة", "احترافية", "تدريب", "منهجية"];
+                    tone = "تعليمي";
+                } else {
+                    domain = "other";
+                    keywords = ["خدمة", "جودة", "احترافية", "موثوقية", "تميز", "نجاح", "ريادة", "خبرة"];
+                }
+                
+                // اختر عشوائيًا من الكلمات الإيجابية والكلمات المتخصصة
+                const getRandomElements = (arr, count) => {
+                    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+                    return shuffled.slice(0, count);
+                };
+                
+                const selectedPositive = getRandomElements(positiveWords, 3);
+                const selectedKeywords = getRandomElements(keywords, 3);
+                
+                // صياغة العنوان
+                const title = `# ${data.projectName || "مشروعنا المميز"} - ${selectedKeywords[0]} ${tone} لا مثيل له!`;
+                
+                // تخصيص الإعلان حسب منصة النشر
+                let platformSpecific = "";
+                if (data.adPlatform.includes("وسائل التواصل") || data.adPlatform.includes("social")) {
+                    platformSpecific = `\n\n**تابعونا على ${getRandomElements(["انستغرام", "تويتر", "فيسبوك", "سناب شات"], 2).join(" و ")}**`;
+                } else if (data.adPlatform.includes("بريد") || data.adPlatform.includes("email")) {
+                    platformSpecific = "\n\n**سارع بالرد على هذا البريد الإلكتروني واحصل على خصم إضافي!**";
+                } else if (data.adPlatform.includes("موقع") || data.adPlatform.includes("website")) {
+                    platformSpecific = "\n\n**تصفح موقعنا الإلكتروني للاطلاع على المزيد من العروض والخدمات!**";
+                } else if (data.adPlatform.includes("رسائل") || data.adPlatform.includes("sms")) {
+                    platformSpecific = "\n\n**أرسل كلمة 'نعم' للاشتراك في نشرتنا واحصل على خصم فوري!**";
+                } else if (data.adPlatform.includes("مطبوعات") || data.adPlatform.includes("print")) {
+                    platformSpecific = "\n\n**أحضر هذا الإعلان معك واحصل على خصم خاص!**";
+                }
+                
+                // صياغة المقدمة
+                let intro = "";
+                if (data.projectDescription) {
+                    intro = `${data.projectDescription} نقدم لكم تجربة ${selectedPositive[0]} في مجال ${data.projectCategory || "مشروعنا"}.`;
+                } else {
+                    intro = `نقدم لكم تجربة ${selectedPositive[0]} في مجال ${data.projectCategory || "مشروعنا"}. نسعى دائمًا لتقديم أفضل ${selectedKeywords[1]} لعملائنا الكرام.`;
+                }
+                
+                // صياغة القائمة
+                let features = "نقدم لكم:\n";
+                
+                // اختيار مزايا عشوائية بناءً على المجال
+                const domainFeatures = strategiesByDomain[domain] || strategiesByDomain.other;
+                const selectedFeatures = getRandomElements(domainFeatures, 4);
+                
+                for (let i = 0; i < selectedFeatures.length; i++) {
+                    features += `- ${selectedFeatures[i]}\n`;
+                }
+                
+                // صياغة العرض الخاص
+                let specialOffer = "";
+                if (data.targetAudience) {
+                    specialOffer = `\n**عرض خاص لـ${data.targetAudience}**: خصم ${Math.floor(Math.random() * 20) + 10}% على جميع ${selectedKeywords[2]} ${tone}!`;
+                } else {
+                    specialOffer = `\n**عرض خاص**: خصم ${Math.floor(Math.random() * 20) + 10}% لفترة محدودة!`;
+                }
+                
+                // صياغة الدعوة للعمل
+                const randomCta = getRandomElements(ctaWords, 1)[0];
+                const callToAction = `\n${randomCta} واستمتع بتجربة ${selectedPositive[2]} لا تنسى ✨`;
+                
+                // تجميع الإعلان
+                if (completionRatio < 0.8) {
+                    // إذا الإكمال أقل من 80%، عرض إعلان جزئي
+                    return `${title}\n\n${intro}\n\n${features}`;
+                } else {
+                    // إذا الإكمال أكثر من 80%، عرض الإعلان الكامل
+                    return `${title}\n\n${intro}\n\n${features}${specialOffer}${platformSpecific}${callToAction}`;
+                }
+            }
+            
+            // إنشاء أفكار تسويقية ديناميكية بناءً على بيانات المستخدم
+            function generateDynamicIdeas(data, completionRatio) {
+                // تحديد المجال
+                let domain = "other";
+                if (data.projectCategory.includes("مطاعم") || data.projectCategory.includes("كافيهات") || data.projectCategory.includes("food")) {
+                    domain = "food";
+                } else if (data.projectCategory.includes("أزياء") || data.projectCategory.includes("ملابس") || data.projectCategory.includes("fashion")) {
+                    domain = "fashion";
+                } else if (data.projectCategory.includes("تقنية") || data.projectCategory.includes("إلكترونيات") || data.projectCategory.includes("tech")) {
+                    domain = "tech";
+                } else if (data.projectCategory.includes("صحة") || data.projectCategory.includes("تجميل") || data.projectCategory.includes("health")) {
+                    domain = "health";
+                } else if (data.projectCategory.includes("تعليم") || data.projectCategory.includes("تدريب") || data.projectCategory.includes("education")) {
+                    domain = "education";
+                }
+                
+                // تحديد الهدف التسويقي
+                let goalType = "awareness";
+                if (data.marketingGoal.includes("وعي") || data.marketingGoal.includes("awareness")) {
+                    goalType = "awareness";
+                } else if (data.marketingGoal.includes("عملاء") || data.marketingGoal.includes("leads")) {
+                    goalType = "leads";
+                } else if (data.marketingGoal.includes("مبيعات") || data.marketingGoal.includes("sales")) {
+                    goalType = "sales";
+                } else if (data.marketingGoal.includes("ولاء") || data.marketingGoal.includes("loyalty")) {
+                    goalType = "loyalty";
+                }
+                
+                // بناء استراتيجيات خاصة بالمجال والهدف والميزانية
+                const strategies = [];
+                
+                // اختيار استراتيجيات من مجال المشروع
+                const domainStrategies = strategiesByDomain[domain] || strategiesByDomain.other;
+                
+                // اختر استراتيجيات مناسبة للميزانية
+                let budgetLevel = "medium";
+                if (data.budget.includes("منخفضة") || data.budget.includes("low")) {
+                    budgetLevel = "low";
+                } else if (data.budget.includes("متوسطة") || data.budget.includes("medium")) {
+                    budgetLevel = "medium";
+                } else if (data.budget.includes("عالية") || data.budget.includes("high")) {
+                    budgetLevel = "high";
+                }
+                
+                // استراتيجيات مناسبة للميزانية المنخفضة
+                const lowBudgetStrategies = [
+                    "استخدام وسائل التواصل الاجتماعي", "التسويق عبر المحتوى", "تسويق الإحالة",
+                    "تعاون مع مؤثرين صغار", "بناء مجتمع محلي", "تحسين تجربة العملاء",
+                    "استخدام البريد الإلكتروني", "تحسين محركات البحث"
+                ];
+                
+                // استراتيجيات مناسبة للميزانية المتوسطة
+                const mediumBudgetStrategies = [
+                    "إعلانات مستهدفة على منصات التواصل", "تطوير برنامج ولاء", "فعاليات ترويجية محلية",
+                    "تحسين تجربة المستخدم", "إنتاج محتوى احترافي", "التسويق عبر المؤثرين",
+                    "تطوير العلامة التجارية", "تنظيم عروض وخصومات"
+                ];
+                
+                // استراتيجيات مناسبة للميزانية العالية
+                const highBudgetStrategies = [
+                    "حملات إعلانية شاملة", "رعاية فعاليات كبرى", "إنتاج محتوى فيديو احترافي",
+                    "تطوير تطبيق مخصص", "تعاون مع مشاهير", "إطلاق منتجات/خدمات جديدة",
+                    "توسيع نطاق العمل", "استخدام تقنيات متقدمة"
+                ];
+                
+                // اختيار الاستراتيجيات المناسبة للميزانية
+                let budgetStrategies = [];
+                if (budgetLevel === "low") {
+                    budgetStrategies = lowBudgetStrategies;
+                } else if (budgetLevel === "medium") {
+                    budgetStrategies = [...lowBudgetStrategies, ...mediumBudgetStrategies];
+                } else {
+                    budgetStrategies = [...lowBudgetStrategies, ...mediumBudgetStrategies, ...highBudgetStrategies];
+                }
+                
+                // دمج الاستراتيجيات واختيار أفضلها
+                const allStrategies = [...domainStrategies, ...budgetStrategies];
+                const uniqueStrategies = [...new Set(allStrategies)];
+                
+                // الحصول على استراتيجيات عشوائية
+                const getRandomElements = (arr, count) => {
+                    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+                    return shuffled.slice(0, count);
+                };
+                
+                // اختيار 5 استراتيجيات
+                const selectedStrategies = getRandomElements(uniqueStrategies, 5);
+                
+                // تجهيز المقدمة
+                const title = `## ${5} أفكار تسويقية مبتكرة لمشروعك`;
+                
+                // إذا كان الإكمال أقل من 50%، عرض محتوى جزئي
+                if (completionRatio < 0.5) {
+                    return `${title}\n\nجاري إعداد الأفكار التسويقية...`;
+                }
+                
+                // أوصاف الاستراتيجيات حسب الهدف
+                const strategyDescriptions = {
+                    awareness: [
+                        "زيادة الوعي بالعلامة التجارية من خلال المحتوى الجذاب",
+                        "بناء صورة ذهنية إيجابية للعلامة التجارية",
+                        "الوصول إلى شريحة أكبر من الجمهور المستهدف",
+                        "تعزيز التعرف على العلامة التجارية في السوق المحلي",
+                        "إبراز القيم الفريدة للعلامة التجارية"
+                    ],
+                    leads: [
+                        "جذب عملاء محتملين من خلال عروض خاصة",
+                        "استقطاب عملاء جدد بطرق مبتكرة",
+                        "تحويل الزوار إلى عملاء محتملين",
+                        "بناء قائمة بريدية للعملاء المهتمين",
+                        "جمع معلومات العملاء المحتملين للتواصل المستقبلي"
+                    ],
+                    sales: [
+                        "زيادة المبيعات من خلال عروض محدودة",
+                        "تحفيز الشراء بطرق إبداعية",
+                        "تشجيع العملاء الحاليين على الشراء المتكرر",
+                        "زيادة متوسط قيمة الطلب",
+                        "تسريع دورة المبيعات"
+                    ],
+                    loyalty: [
+                        "تعزيز ولاء العملاء من خلال برامج المكافآت",
+                        "بناء علاقات طويلة الأمد مع العملاء",
+                        "تحويل العملاء العاديين إلى سفراء للعلامة التجارية",
+                        "زيادة معدل الاحتفاظ بالعملاء",
+                        "تشجيع الإحالات من العملاء الحاليين"
+                    ]
+                };
+                
+                // طرق التنفيذ
+                const implementationMethods = [
+                    "إنشاء محتوى جذاب على منصات التواصل الاجتماعي",
+                    "تطوير نظام إلكتروني لإدارة العلاقات مع العملاء",
+                    "تقديم عروض حصرية للعملاء المسجلين",
+                    "التعاون مع شركات أو مؤثرين في نفس المجال",
+                    "إطلاق حملة إعلانية مدفوعة على منصات التواصل",
+                    "تنظيم مسابقات أو فعاليات تفاعلية",
+                    "إنشاء برنامج إحالة يكافئ العملاء الحاليين",
+                    "التواصل المباشر مع العملاء عبر الرسائل الشخصية",
+                    "تطوير محتوى تثقيفي يستهدف احتياجات العملاء",
+                    "إطلاق حملة بريدية منظمة للعملاء المحتملين",
+                    "إنشاء مجموعة مجتمعية على منصات التواصل",
+                    "تطوير استراتيجية تسويق محتوى مستدامة"
+                ];
+                
+                // النتائج المتوقعة
+                const expectedResults = [
+                    "زيادة الوعي بالعلامة التجارية بنسبة 30%",
+                    "زيادة التفاعل على منصات التواصل الاجتماعي",
+                    "استقطاب 50-100 عميل جديد شهريًا",
+                    "زيادة المبيعات بنسبة 25% خلال 3 أشهر",
+                    "تحسين معدل الاحتفاظ بالعملاء بنسبة 20%",
+                    "زيادة معدل تكرار الشراء",
+                    "تعزيز صورة العلامة التجارية في السوق",
+                    "بناء قاعدة عملاء مخلصين للعلامة التجارية",
+                    "توليد المزيد من الإحالات من العملاء الحاليين",
+                    "زيادة متوسط قيمة الطلب بنسبة 15%",
+                    "خلق شعور بالإلحاح والندرة يشجع على الشراء",
+                    "تطوير علاقات أقوى مع العملاء الرئيسيين"
+                ];
+                
+                // بناء الأفكار
+                let content = title + "\n\n";
+                
+                // عدد الأفكار المعروضة بناءً على نسبة الاكتمال
+                const ideasToShow = Math.ceil(5 * completionRatio);
+                
+                for (let i = 0; i < ideasToShow; i++) {
+                    if (i < selectedStrategies.length) {
+                        const strategyDescriptionsForGoal = strategyDescriptions[goalType] || strategyDescriptions.awareness;
+                        const description = getRandomElements(strategyDescriptionsForGoal, 1)[0];
+                        const implementation = getRandomElements(implementationMethods, 1)[0];
+                        const result = getRandomElements(expectedResults, 1)[0];
+                        
+                        content += `### ${i+1}. ${selectedStrategies[i]}\n`;
+                        content += `**وصف**: ${description}.\n`;
+                        content += `**كيفية التنفيذ**: ${implementation}.\n`;
+                        content += `**النتائج المتوقعة**: ${result}.\n\n`;
+                    }
+                }
+                
+                return content;
+            }
+            
+            window.Poe = {
+                // وظيفة تسجيل المعالج
+                registerHandler: function(handlerId, callback) {
+                    console.log(`تم تسجيل معالج: ${handlerId}`);
+                    window.Poe.handlers = window.Poe.handlers || {};
+                    window.Poe.handlers[handlerId] = callback;
+                },
+                
+                // وظيفة إرسال رسالة المستخدم مع دعم محاكاة ذكاء اصطناعي محلي
+                sendUserMessage: async function(prompt, options = {}) {
+                    console.log(`إرسال رسالة: ${prompt}`);
+                    console.log("الخيارات:", options);
+                    
+                    const handlerId = options.handler;
+                    if (handlerId && window.Poe.handlers && window.Poe.handlers[handlerId]) {
+                        // استخراج البيانات من سلسلة الطلب
+                        const promptData = extractPromptData(prompt);
+                        
+                        // محاكاة التأخير والاستجابة التدريجية
+                        if (options.stream) {
+                            // المرحلة الأولى: جاري التفكير
+                            window.Poe.handlers[handlerId]({
+                                status: "incomplete",
+                                responses: [{
+                                    messageId: "local-ai-msg-1",
+                                    senderId: "LocalAI",
+                                    content: "جاري تحليل البيانات...",
+                                    contentType: "text/markdown",
+                                    status: "incomplete"
+                                }]
+                            });
+                            
+                            // المرحلة الثانية: بدء صياغة الإجابة
+                            setTimeout(() => {
+                                window.Poe.handlers[handlerId]({
+                                    status: "incomplete",
+                                    responses: [{
+                                        messageId: "local-ai-msg-1",
+                                        senderId: "LocalAI",
+                                        content: "جاري تحليل البيانات...\n\nبدأت صياغة " + 
+                                            (promptData.isAdRequest ? "الإعلان" : "الأفكار التسويقية") + 
+                                            " بناءً على المعلومات المقدمة.",
+                                        contentType: "text/markdown",
+                                        status: "incomplete"
+                                    }]
+                                });
+                                
+                                // المرحلة الثالثة: المحتوى الأولي
+                                setTimeout(() => {
+                                    const partialContent = generateDynamicContent(promptData, 0.4);
+                                    window.Poe.handlers[handlerId]({
+                                        status: "incomplete",
+                                        responses: [{
+                                            messageId: "local-ai-msg-1",
+                                            senderId: "LocalAI",
+                                            content: partialContent,
+                                            contentType: "text/markdown",
+                                            status: "incomplete"
+                                        }]
+                                    });
+                                    
+                                    // المرحلة الرابعة: المحتوى شبه المكتمل
+                                    setTimeout(() => {
+                                        const moreContent = generateDynamicContent(promptData, 0.8);
+                                        window.Poe.handlers[handlerId]({
+                                            status: "incomplete",
+                                            responses: [{
+                                                messageId: "local-ai-msg-1",
+                                                senderId: "LocalAI",
+                                                content: moreContent,
+                                                contentType: "text/markdown",
+                                                status: "incomplete"
+                                            }]
+                                        });
+                                        
+                                        // المرحلة النهائية: المحتوى المكتمل
+                                        setTimeout(() => {
+                                            const finalContent = generateDynamicContent(promptData, 1.0);
+                                            window.Poe.handlers[handlerId]({
+                                                status: "complete",
+                                                responses: [{
+                                                    messageId: "local-ai-msg-1",
+                                                    senderId: "LocalAI",
+                                                    content: finalContent,
+                                                    contentType: "text/markdown",
+                                                    status: "complete"
+                                                }]
+                                            });
+                                        }, 1000);
+                                    }, 1200);
+                                }, 800);
+                            }, 600);
+                        } else {
+                            // استجابة كاملة دون عرض مباشر
+                            setTimeout(() => {
+                                const content = generateDynamicContent(promptData, 1.0);
+                                window.Poe.handlers[handlerId]({
+                                    status: "complete",
+                                    responses: [{
+                                        messageId: "local-ai-msg-1",
+                                        senderId: "LocalAI",
+                                        content: content,
+                                        contentType: "text/markdown",
+                                        status: "complete"
+                                    }]
+                                });
+                            }, 1500);
+                        }
+                    }
+                    return { success: true };
+                },
+                handlers: {}
+            };
+        }
+
+        // تأثير النقاط أثناء التحميل
+        function startTypingDots(elementId) {
+            const dotsElement = document.getElementById(elementId);
+            let count = 0;
+            
+            const interval = setInterval(() => {
+                count = (count + 1) % 4;
+                let dots = '.';
+                for (let i = 0; i < count; i++) {
+                    dots += '.';
+                }
+                dotsElement.textContent = dots;
+                
+                // تحقق مما إذا كان العنصر لا يزال موجودًا في الصفحة
+                if (!document.body.contains(dotsElement)) {
+                    clearInterval(interval);
+                }
+            }, 500);
+            
+            return interval;
+        }
+
+        // تحويل النص العادي إلى HTML مع دعم Markdown
+        function renderMarkdown(text) {
+            // استخدام مكتبة marked.js لتحويل Markdown إلى HTML
+            if (typeof marked !== 'undefined' && text) {
+                return marked.parse(text);
+            } else {
+                // في حالة عدم وجود المكتبة، استبدل السطور الجديدة بـ <br>
+                return text ? text.replace(/\n/g, '<br>') : '';
+            }
+        }
+        
+        // إعداد تبديل الوضع المظلم/الفاتح
+        function setupThemeToggle() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+            }
+            
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+                if (event.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            });
+            
+            // تبديل الوضع المظلم/الفاتح عند النقر على الزر
+            document.getElementById('theme-toggle').addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // تبديل الوضع المظلم/الفاتح في قائمة الجوال
+            const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+            if (mobileThemeToggle) {
+                mobileThemeToggle.addEventListener('click', () => {
+                    document.documentElement.classList.toggle('dark');
+                });
+            }
+        }
+        
+        // استدعاء وظيفة تبديل الوضع المظلم/الفاتح عند تحميل الصفحة
+        setupThemeToggle();
+        
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+                
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 64, // Account for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Handle Other Category toggle for Ad form
+        document.getElementById('project-category').addEventListener('change', function() {
+            const otherContainer = document.getElementById('other-category-container');
+            if (this.value === 'other') {
+                otherContainer.classList.remove('hidden');
+            } else {
+                otherContainer.classList.add('hidden');
+            }
+        });
+        
+        // Handle audience type for Ad form
+        document.getElementById('audience-type').addEventListener('change', function() {
+            const customContainer = document.getElementById('custom-audience-container');
+            if (this.value === 'custom') {
+                customContainer.classList.remove('hidden');
+            } else {
+                customContainer.classList.add('hidden');
+            }
+        });
+        
+        // Handle Other Category toggle for Ideas form
+        document.getElementById('ideas-category').addEventListener('change', function() {
+            const otherContainer = document.getElementById('ideas-other-category-container');
+            if (this.value === 'other') {
+                otherContainer.classList.remove('hidden');
+            } else {
+                otherContainer.classList.add('hidden');
+            }
+        });
+
+        // دالة عامة لمعالجة الطلبات الشائعة
+        async function handleAIRequest(formSelector, promptGenerator, resultDivId, loadingDivId, contentDivId, errorDivId, textDivId, dotsId) {
+            const form = document.getElementById(formSelector);
+            
+            // تسجيل المعالج لاستقبال ردود البوت
+            const handlerId = formSelector + '-handler';
+            
+            // تسجيل المعالج فقط إذا كان Poe متاحًا
+            if (typeof window.Poe !== 'undefined') {
+                window.Poe.registerHandler(handlerId, (result) => {
+                    // الحصول على عناصر العرض
+                    const loadingDiv = document.getElementById(loadingDivId);
+                    const contentDiv = document.getElementById(contentDivId);
+                    const errorDiv = document.getElementById(errorDivId);
+                    const textDiv = document.getElementById(textDivId);
+                    
+                    // التحقق من وجود رد
+                    if (result.responses && result.responses.length > 0) {
+                        const msg = result.responses[0];
+                        
+                        if (msg.status === "error") {
+                            // عرض رسالة الخطأ
+                            const errorMessage = document.getElementById(errorDivId).querySelector('span');
+                            errorMessage.textContent = 'حدث خطأ: ' + (msg.statusText || 'خطأ غير معروف');
+                            
+                            loadingDiv.classList.add('hidden');
+                            errorDiv.classList.remove('hidden');
+                            contentDiv.classList.add('hidden');
+                        } else if (msg.status === "incomplete") {
+                            // عرض المحتوى الجزئي أثناء العرض المباشر
+                            loadingDiv.classList.add('hidden');
+                            contentDiv.classList.remove('hidden');
+                            textDiv.innerHTML = renderMarkdown(msg.content);
+                        } else if (msg.status === "complete") {
+                            // عرض المحتوى النهائي
+                            loadingDiv.classList.add('hidden');
+                            contentDiv.classList.remove('hidden');
+                            textDiv.innerHTML = renderMarkdown(msg.content);
+                        }
+                    }
+                });
+            }
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // الحصول على زر الإرسال
+                const submitButton = this.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.innerHTML;
+                
+                // التأكد من صحة النموذج
+                if (!this.checkValidity()) {
+                    this.reportValidity();
+                    return;
+                }
+                
+                // تعطيل الزر وإظهار حالة التحميل
+                submitButton.disabled = true;
+                submitButton.classList.add('opacity-70');
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin ml-2"></i> جاري المعالجة...';
+                
+                // إظهار منطقة النتيجة وحالة التحميل
+                const resultDiv = document.getElementById(resultDivId);
+                const loadingDiv = document.getElementById(loadingDivId);
+                const contentDiv = document.getElementById(contentDivId);
+                const errorDiv = document.getElementById(errorDivId);
+                
+                resultDiv.classList.remove('hidden');
+                loadingDiv.classList.remove('hidden');
+                contentDiv.classList.add('hidden');
+                errorDiv.classList.add('hidden');
+                
+                // بدء تأثير النقاط المتحركة
+                const dotsInterval = startTypingDots(dotsId);
+                
+                try {
+                    // إنشاء نص الطلب بناءً على بيانات النموذج
+                    const prompt = promptGenerator(this);
+                    
+                    // تسجيل الطلب في وحدة التحكم للتصحيح
+                    console.log('Sending request with prompt:', prompt);
+                    
+                    // التحقق من وجود Poe API
+                    if (typeof window.Poe !== 'undefined') {
+                        // إرسال الرسالة إلى البوت مع تفعيل العرض المباشر وإظهار الرد في التطبيق
+                        const botName = '@GPT-4o';
+                        const response = await window.Poe.sendUserMessage(botName + ' ' + prompt, { 
+                            openChat: false,
+                            handler: handlerId,
+                            stream: true
+                        });
+                        
+                        // إذا لم تكن هناك أخطاء حتى الآن، سيتم التعامل مع الرد في المعالج المسجل سابقًا
+                    } else {
+                        // الوضع المحلي - محاكاة التأخير
+                        console.log("وضع المحاكاة: سيتم توفير نتائج حقيقية استنادًا إلى البيانات المدخلة");
+                        
+                        // وضع محاكاة للاختبار المحلي - تم تغطيته بالفعل في تعريف window.Poe أعلاه
+                    }
+                    
+                    // إعادة تمكين زر الإرسال بعد فترة
+                    setTimeout(() => {
+                        submitButton.disabled = false;
+                        submitButton.classList.remove('opacity-70');
+                        submitButton.innerHTML = originalButtonText;
+                    }, 5000); // انتظر 5 ثوانٍ على الأقل قبل تمكين الزر مرة أخرى
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    
+                    // إظهار رسالة الخطأ
+                    const errorMessage = document.getElementById(errorDivId).querySelector('span');
+                    errorMessage.textContent = 'حدث خطأ: ' + (error.message || 'خطأ غير معروف');
+                    
+                    // إخفاء حالة التحميل وإظهار الخطأ
+                    loadingDiv.classList.add('hidden');
+                    errorDiv.classList.remove('hidden');
+                    
+                    // إيقاف تأثير النقاط المتحركة
+                    clearInterval(dotsInterval);
+                    
+                    // إعادة تمكين زر الإرسال
+                    submitButton.disabled = false;
+                    submitButton.classList.remove('opacity-70');
+                    submitButton.innerHTML = originalButtonText;
+                }
+            });
+        }
+
+        // إنشاء مولد نص الطلب لإنشاء الإعلان
+        function generateAdPrompt(form) {
+            const projectName = document.getElementById('project-name').value;
+            const projectCategory = document.getElementById('project-category').value;
+            const otherCategory = document.getElementById('other-category').value;
+            const projectDescription = document.getElementById('project-description').value;
+            const adPlatform = document.getElementById('ad-platform').value;
+            const audienceType = document.getElementById('audience-type').value;
+            const customAudience = document.getElementById('custom-audience').value;
+            
+            // تحضير التصنيف النهائي
+            const finalCategory = projectCategory === 'other' ? otherCategory : 
+                projectCategory === 'food' ? 'مطاعم وكافيهات' :
+                projectCategory === 'fashion' ? 'أزياء وملابس' :
+                projectCategory === 'tech' ? 'تقنية وإلكترونيات' :
+                projectCategory === 'health' ? 'صحة وتجميل' :
+                projectCategory === 'education' ? 'تعليم وتدريب' : projectCategory;
+            
+            // تحضير منصة النشر
+            const finalPlatform = adPlatform === 'social' ? 'وسائل التواصل الاجتماعي' :
+                adPlatform === 'email' ? 'البريد الإلكتروني' :
+                adPlatform === 'website' ? 'موقع إلكتروني' :
+                adPlatform === 'sms' ? 'رسائل نصية' :
+                adPlatform === 'print' ? 'مطبوعات' : adPlatform;
+            
+            // تحضير الجمهور المستهدف
+            const finalAudience = audienceType === 'custom' ? customAudience :
+                audienceType === 'youth' ? 'الشباب' :
+                audienceType === 'families' ? 'العائلات' :
+                audienceType === 'women' ? 'النساء' :
+                audienceType === 'men' ? 'الرجال' :
+                audienceType === 'professionals' ? 'أصحاب المهن' :
+                audienceType === 'students' ? 'الطلاب' :
+                audienceType === 'general' ? 'الجمهور العام' : audienceType;
+            
+            return `أنت خبير تسويق محترف. اكتب لي إعلانًا تسويقيًا جذابًا ومقنعًا لمشروع بناءً على المعلومات التالية:
+                
+                اسم المشروع: ${projectName}
+                مجال المشروع: ${finalCategory}
+                منصة النشر: ${finalPlatform}
+                وصف المشروع: ${projectDescription}
+                الجمهور المستهدف: ${finalAudience}
+                
+                يرجى كتابة إعلان تسويقي مقنع ومختصر (لا يزيد عن 100-150 كلمة) يركز على ميزات المشروع وفوائده للعملاء.
+                
+                ملاحظات:
+                - استخدم أسلوبًا جذابًا ومباشرًا
+                - استخدم لغة مقنعة وتحفيزية
+                - ركز على الميزات والفوائد التي تهم الجمهور المستهدف
+                - ضمّن محتوى مناسبًا لمنصة النشر المحددة (${finalPlatform})
+                - أضف عبارة تحفيزية (call to action) في نهاية الإعلان
+                
+                اكتب الإعلان مباشرة بدون أي مقدمات أو تعليقات.
+            `;
+        }
+
+        // إنشاء مولد نص الطلب للأفكار التسويقية
+        function generateIdeasPrompt(form) {
+            const category = document.getElementById('ideas-category').value;
+            const otherCategory = document.getElementById('ideas-other-category').value;
+            const marketingGoal = document.getElementById('marketing-goal').value;
+            const budget = document.getElementById('budget').value;
+            
+            // تحضير التصنيف النهائي
+            const finalCategory = category === 'other' ? otherCategory : 
+                category === 'food' ? 'مطاعم وكافيهات' :
+                category === 'fashion' ? 'أزياء وملابس' :
+                category === 'tech' ? 'تقنية وإلكترونيات' :
+                category === 'health' ? 'صحة وتجميل' :
+                category === 'education' ? 'تعليم وتدريب' : category;
+            
+            // تحضير هدف التسويق
+            const finalGoal = marketingGoal === 'awareness' ? 'زيادة الوعي بالعلامة التجارية' :
+                marketingGoal === 'leads' ? 'جذب عملاء محتملين' :
+                marketingGoal === 'sales' ? 'زيادة المبيعات' :
+                marketingGoal === 'loyalty' ? 'تعزيز ولاء العملاء' : marketingGoal;
+            
+            // تحضير الميزانية
+            const finalBudget = budget === 'low' ? 'ميزانية منخفضة (أقل من 1000 ريال)' :
+                budget === 'medium' ? 'ميزانية متوسطة (1000-5000 ريال)' :
+                budget === 'high' ? 'ميزانية عالية (أكثر من 5000 ريال)' : budget;
+            
+            return `أنت خبير تسويق محترف. اقترح لي 5 أفكار تسويقية مبتكرة وسهلة التطبيق لمشروع بناءً على المعلومات التالية:
+                
+                مجال المشروع: ${finalCategory}
+                هدف الحملة التسويقية: ${finalGoal}
+                الميزانية التقريبية: ${finalBudget}
+                
+                لكل فكرة تسويقية، قم بتوضيح:
+                1. عنوان الفكرة
+                2. وصف موجز (2-3 جمل)
+                3. كيفية التنفيذ
+                4. النتائج المتوقعة
+                
+                يرجى التركيز على أفكار عملية وسهلة التنفيذ مناسبة للميزانية المحددة.
+                
+                اكتب الأفكار مباشرة بدون أي مقدمات أو تعليقات.
+            `;
+        }
+
+        // معالجة طلب إنشاء الإعلان
+        handleAIRequest(
+            'ad-form',
+            generateAdPrompt,
+            'ad-result',
+            'ad-loading',
+            'ad-content',
+            'ad-error',
+            'ad-text',
+            'ad-typing-dots'
+        );
+
+        // معالجة طلب اقتراح الأفكار
+        handleAIRequest(
+            'ideas-form',
+            generateIdeasPrompt,
+            'ideas-result',
+            'ideas-loading',
+            'ideas-content',
+            'ideas-error',
+            'ideas-text',
+            'ideas-typing-dots'
+        );
+        
+        // معالجة زر إعادة المحاولة للإعلان
+        document.getElementById('ad-retry')?.addEventListener('click', function() {
+            document.getElementById('ad-form').dispatchEvent(new Event('submit'));
+        });
+        
+        // معالجة زر إعادة المحاولة للأفكار
+        document.getElementById('ideas-retry')?.addEventListener('click', function() {
+            document.getElementById('ideas-form').dispatchEvent(new Event('submit'));
+        });
+        
+        // Copy functionality
+        document.getElementById('copy-ad')?.addEventListener('click', function() {
+            const text = document.getElementById('ad-text').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check ml-1"></i>تم النسخ';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error("خطأ في نسخ النص:", err);
+            });
+        });
+        
+        document.getElementById('copy-ideas')?.addEventListener('click', function() {
+            const text = document.getElementById('ideas-text').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check ml-1"></i>تم النسخ';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error("خطأ في نسخ النص:", err);
+            });
+        });
+        
+        // Contact Form
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const subject = document.getElementById('contact-subject').value;
+            const message = document.getElementById('contact-message').value;
+            
+            // Validate form
+            if (!name || !email || !subject || !message) {
+                alert('يرجى ملء جميع الحقول المطلوبة');
+                return;
+            }
+            
+            // Simple email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('يرجى إدخال بريد إلكتروني صحيح');
+                return;
+            }
+            
+            // Reset form
+            this.reset();
+            
+            // Show success message
+            document.getElementById('contact-success').classList.remove('hidden');
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('contact-success').classList.add('hidden');
+            }, 5000);
+        });
+
+        // طباعة رسالة تنبيه إذا كنا في الوضع المحلي
+        if (LOCAL_MODE) {
+            console.log("تنبيه: التطبيق يعمل في وضع محاكاة الذكاء الاصطناعي المحلي. سيتم إنشاء محتوى ديناميكي بناءً على البيانات المدخلة.");
+            console.log("للحصول على تجربة كاملة، قم بتشغيل التطبيق داخل منصة Poe: https://poe.com");
+            
+            // إضافة شريط تنبيه للمطورين في أعلى الصفحة
+            const devBanner = document.createElement('div');
+            devBanner.className = 'fixed top-0 left-0 right-0 bg-blue-600 text-white text-center py-1 z-[60] text-sm';
+            devBanner.innerHTML = '<strong>وضع محاكاة الذكاء الاصطناعي محليًا:</strong> يتم إنشاء ردود ديناميكية بناءً على البيانات المدخلة. كل إجابة ستكون مختلفة وتعكس المدخلات الخاصة بك.';
+            document.body.prepend(devBanner);
+            
+            // تعديل التباعد لمراعاة الشريط الإضافي
+            document.querySelector('main').classList.remove('pt-16');
+            document.querySelector('main').classList.add('pt-20');
+        }
+    </script>
+</body>
+</html>
