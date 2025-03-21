@@ -142,11 +142,49 @@
         .btn-bounce:active {
             transform: scale(0.97);
         }
+
+        /* Progress Bar Styles */
+        .progress-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            border-radius: 4px;
+            margin: 8px 0;
+            height: 8px;
+            overflow: hidden;
+        }
+
+        .dark .progress-container {
+            background-color: #333;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            border-radius: 4px;
+            background: linear-gradient(135deg, #5D5CDE 0%, #8F8EE8 100%);
+            transition: width 0.3s ease;
+        }
+
+        /* تنسيق زر إغلاق الشريط الأزرق */
+        .dev-banner-close {
+            cursor: pointer;
+            padding: 0 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            margin-right: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .dev-banner-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
     </style>
 </head>
 <body class="bg-gray-50 dark:bg-dark-bg text-gray-800 dark:text-gray-100">
+    <!-- الشريط الأزرق لوضع المحاكاة سيتم إضافته ديناميكياً -->
+    
     <!-- Navbar -->
-    <nav class="fixed w-full top-0 z-50 bg-white dark:bg-dark-card shadow-md">
+    <nav class="fixed w-full top-0 z-50 bg-white dark:bg-dark-card shadow-md" id="main-navbar">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
@@ -362,6 +400,14 @@
                                 <div id="ad-loading" class="flex flex-col items-center justify-center py-8">
                                     <div class="loader mb-4"></div>
                                     <p>جاري إنشاء الإعلان... <span id="ad-typing-dots">.</span></p>
+                                    <!-- Progress bar for loading -->
+                                    <div class="progress-container w-4/5 mt-3">
+                                        <div class="progress-bar" id="ad-progress-bar"></div>
+                                    </div>
+                                    <!-- زر إعادة التحميل عند بطء الاستجابة -->
+                                    <button id="ad-reload" class="mt-4 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 py-2 px-4 rounded-lg transition-all btn-bounce hidden">
+                                        <i class="fas fa-redo ml-1"></i>إعادة المحاولة
+                                    </button>
                                 </div>
                                 
                                 <div id="ad-content" class="hidden">
@@ -454,6 +500,14 @@
                                 <div id="ideas-loading" class="flex flex-col items-center justify-center py-8">
                                     <div class="loader mb-4"></div>
                                     <p>جاري اقتراح الأفكار... <span id="ideas-typing-dots">.</span></p>
+                                    <!-- Progress bar for loading -->
+                                    <div class="progress-container w-4/5 mt-3">
+                                        <div class="progress-bar" id="ideas-progress-bar"></div>
+                                    </div>
+                                    <!-- زر إعادة التحميل عند بطء الاستجابة -->
+                                    <button id="ideas-reload" class="mt-4 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 py-2 px-4 rounded-lg transition-all btn-bounce hidden">
+                                        <i class="fas fa-redo ml-1"></i>إعادة المحاولة
+                                    </button>
                                 </div>
                                 
                                 <div id="ideas-content" class="hidden">
@@ -597,6 +651,50 @@
         // إذا كنا في بيئة محلية، إنشاء كائن Poe وهمي مع محرك محاكاة للذكاء الاصطناعي
         if (LOCAL_MODE) {
             console.log("تشغيل في وضع الاختبار المحلي مع محاكاة ذكاء اصطناعي متقدمة.");
+            
+            // إضافة شريط تنبيه للمطورين في أعلى الصفحة مع زر إغلاق (X)
+            const devBanner = document.createElement('div');
+            devBanner.id = 'dev-banner';
+            devBanner.className = 'fixed top-0 left-0 right-0 bg-blue-600 text-white text-center py-2 z-[60] text-sm flex justify-center items-center';
+            
+            // إنشاء حاوية للمحتوى لتوفير تخطيط أفضل
+            const bannerContainer = document.createElement('div');
+            bannerContainer.className = 'container mx-auto flex justify-between items-center px-4';
+            
+            // إضافة زر إغلاق (X) في بداية الشريط
+            const closeButton = document.createElement('button');
+            closeButton.className = 'dev-banner-close';
+            closeButton.innerHTML = '<i class="fas fa-times"></i>';
+            closeButton.title = 'إغلاق الشريط';
+            
+            // إضافة نص الشريط في المنتصف
+            const bannerText = document.createElement('div');
+            bannerText.className = 'flex-grow text-center';
+            bannerText.innerHTML = '<strong>وضع محاكاة الذكاء الاصطناعي محليًا:</strong> يتم إنشاء ردود ديناميكية بناءً على البيانات المدخلة. كل إجابة ستكون مختلفة وتعكس المدخلات الخاصة بك.';
+            
+            // إضافة مساحة فارغة في نهاية الشريط للتوازن
+            const spacer = document.createElement('div');
+            spacer.className = 'w-8';
+            
+            // تجميع عناصر الشريط
+            bannerContainer.appendChild(closeButton);
+            bannerContainer.appendChild(bannerText);
+            bannerContainer.appendChild(spacer);
+            devBanner.appendChild(bannerContainer);
+            
+            // إضافة الشريط إلى الصفحة
+            document.body.prepend(devBanner);
+            
+            // تعديل التباعد لمراعاة الشريط الإضافي
+            const mainNavbar = document.getElementById('main-navbar');
+            mainNavbar.style.marginTop = devBanner.offsetHeight + 'px';
+            
+            // إضافة وظيفة إغلاق الشريط عند النقر على زر الإغلاق
+            closeButton.addEventListener('click', function() {
+                devBanner.style.display = 'none';
+                // إعادة ضبط موضع شريط التنقل
+                mainNavbar.style.marginTop = '0';
+            });
             
             // الكلمات الإيجابية الشائعة في الإعلانات
             const positiveWords = [
@@ -1245,8 +1343,16 @@
             }
         });
 
+        // تحديث شريط التقدم أثناء التحميل
+        function updateProgressBar(progressBarId, progress) {
+            const progressBar = document.getElementById(progressBarId);
+            if (progressBar) {
+                progressBar.style.width = `${progress}%`;
+            }
+        }
+
         // دالة عامة لمعالجة الطلبات الشائعة
-        async function handleAIRequest(formSelector, promptGenerator, resultDivId, loadingDivId, contentDivId, errorDivId, textDivId, dotsId) {
+        async function handleAIRequest(formSelector, promptGenerator, resultDivId, loadingDivId, contentDivId, errorDivId, textDivId, dotsId, progressBarId, reloadButtonId) {
             const form = document.getElementById(formSelector);
             
             // تسجيل المعالج لاستقبال ردود البوت
@@ -1260,6 +1366,7 @@
                     const contentDiv = document.getElementById(contentDivId);
                     const errorDiv = document.getElementById(errorDivId);
                     const textDiv = document.getElementById(textDivId);
+                    const reloadButton = document.getElementById(reloadButtonId);
                     
                     // التحقق من وجود رد
                     if (result.responses && result.responses.length > 0) {
@@ -1273,16 +1380,24 @@
                             loadingDiv.classList.add('hidden');
                             errorDiv.classList.remove('hidden');
                             contentDiv.classList.add('hidden');
+                            reloadButton.classList.add('hidden');
                         } else if (msg.status === "incomplete") {
                             // عرض المحتوى الجزئي أثناء العرض المباشر
                             loadingDiv.classList.add('hidden');
                             contentDiv.classList.remove('hidden');
                             textDiv.innerHTML = renderMarkdown(msg.content);
+                            
+                            // تحديث شريط التقدم عند تلقي محتوى جزئي
+                            updateProgressBar(progressBarId, 65);
                         } else if (msg.status === "complete") {
                             // عرض المحتوى النهائي
                             loadingDiv.classList.add('hidden');
                             contentDiv.classList.remove('hidden');
                             textDiv.innerHTML = renderMarkdown(msg.content);
+                            reloadButton.classList.add('hidden');
+                            
+                            // تحديث شريط التقدم عند اكتمال المحتوى
+                            updateProgressBar(progressBarId, 100);
                         }
                     }
                 });
@@ -1311,14 +1426,25 @@
                 const loadingDiv = document.getElementById(loadingDivId);
                 const contentDiv = document.getElementById(contentDivId);
                 const errorDiv = document.getElementById(errorDivId);
+                const reloadButton = document.getElementById(reloadButtonId);
                 
                 resultDiv.classList.remove('hidden');
                 loadingDiv.classList.remove('hidden');
                 contentDiv.classList.add('hidden');
                 errorDiv.classList.add('hidden');
+                reloadButton.classList.add('hidden');
+                
+                // إعادة تعيين شريط التقدم
+                updateProgressBar(progressBarId, 10);
                 
                 // بدء تأثير النقاط المتحركة
                 const dotsInterval = startTypingDots(dotsId);
+                
+                // إظهار زر إعادة التحميل بعد فترة
+                const loadTimeout = setTimeout(() => {
+                    reloadButton.classList.remove('hidden');
+                    updateProgressBar(progressBarId, 40); // تحديث التقدم المرئي
+                }, 10000); // انتظر 10 ثواني قبل إظهار زر إعادة التحميل
                 
                 try {
                     // إنشاء نص الطلب بناءً على بيانات النموذج
@@ -1326,6 +1452,9 @@
                     
                     // تسجيل الطلب في وحدة التحكم للتصحيح
                     console.log('Sending request with prompt:', prompt);
+                    
+                    // تحديث شريط التقدم إلى 30%
+                    updateProgressBar(progressBarId, 30);
                     
                     // التحقق من وجود Poe API
                     if (typeof window.Poe !== 'undefined') {
@@ -1337,10 +1466,27 @@
                             stream: true
                         });
                         
+                        // مسح مؤقت إعادة التحميل إذا تم استلام استجابة
+                        clearTimeout(loadTimeout);
+                        
+                        // تحديث التقدم المرئي
+                        updateProgressBar(progressBarId, 50);
+                        
                         // إذا لم تكن هناك أخطاء حتى الآن، سيتم التعامل مع الرد في المعالج المسجل سابقًا
                     } else {
                         // الوضع المحلي - محاكاة التأخير
                         console.log("وضع المحاكاة: سيتم توفير نتائج حقيقية استنادًا إلى البيانات المدخلة");
+                        
+                        // تحديث التقدم المرئي
+                        let progress = 20;
+                        const progressInterval = setInterval(() => {
+                            progress += 10;
+                            if (progress <= 90) {
+                                updateProgressBar(progressBarId, progress);
+                            } else {
+                                clearInterval(progressInterval);
+                            }
+                        }, 1000);
                         
                         // وضع محاكاة للاختبار المحلي - تم تغطيته بالفعل في تعريف window.Poe أعلاه
                     }
@@ -1366,11 +1512,19 @@
                     // إيقاف تأثير النقاط المتحركة
                     clearInterval(dotsInterval);
                     
+                    // مسح مؤقت إعادة التحميل
+                    clearTimeout(loadTimeout);
+                    
                     // إعادة تمكين زر الإرسال
                     submitButton.disabled = false;
                     submitButton.classList.remove('opacity-70');
                     submitButton.innerHTML = originalButtonText;
                 }
+            });
+            
+            // إضافة معالجة لزر إعادة التحميل
+            document.getElementById(reloadButtonId).addEventListener('click', function() {
+                form.dispatchEvent(new Event('submit'));
             });
         }
 
@@ -1426,7 +1580,7 @@
                 - ضمّن محتوى مناسبًا لمنصة النشر المحددة (${finalPlatform})
                 - أضف عبارة تحفيزية (call to action) في نهاية الإعلان
                 
-                اكتب الإعلان مباشرة بدون أي مقدمات أو تعليقات.
+                اكتب الإعلان مباشرة بدون أي مقدمات أو تعليقات. أرجو سرعة الاستجابة.
             `;
         }
 
@@ -1468,7 +1622,7 @@
                 3. كيفية التنفيذ
                 4. النتائج المتوقعة
                 
-                يرجى التركيز على أفكار عملية وسهلة التنفيذ مناسبة للميزانية المحددة.
+                يرجى التركيز على أفكار عملية وسهلة التنفيذ مناسبة للميزانية المحددة. أرجو سرعة الاستجابة.
                 
                 اكتب الأفكار مباشرة بدون أي مقدمات أو تعليقات.
             `;
@@ -1483,7 +1637,9 @@
             'ad-content',
             'ad-error',
             'ad-text',
-            'ad-typing-dots'
+            'ad-typing-dots',
+            'ad-progress-bar',
+            'ad-reload'
         );
 
         // معالجة طلب اقتراح الأفكار
@@ -1495,7 +1651,9 @@
             'ideas-content',
             'ideas-error',
             'ideas-text',
-            'ideas-typing-dots'
+            'ideas-typing-dots',
+            'ideas-progress-bar',
+            'ideas-reload'
         );
         
         // معالجة زر إعادة المحاولة للإعلان
@@ -1569,22 +1727,6 @@
                 document.getElementById('contact-success').classList.add('hidden');
             }, 5000);
         });
-
-        // طباعة رسالة تنبيه إذا كنا في الوضع المحلي
-        if (LOCAL_MODE) {
-            console.log("تنبيه: التطبيق يعمل في وضع محاكاة الذكاء الاصطناعي المحلي. سيتم إنشاء محتوى ديناميكي بناءً على البيانات المدخلة.");
-            console.log("للحصول على تجربة كاملة، قم بتشغيل التطبيق داخل منصة Poe: https://poe.com");
-            
-            // إضافة شريط تنبيه للمطورين في أعلى الصفحة
-            const devBanner = document.createElement('div');
-            devBanner.className = 'fixed top-0 left-0 right-0 bg-blue-600 text-white text-center py-1 z-[60] text-sm';
-            devBanner.innerHTML = '<strong>وضع محاكاة الذكاء الاصطناعي محليًا:</strong> يتم إنشاء ردود ديناميكية بناءً على البيانات المدخلة. كل إجابة ستكون مختلفة وتعكس المدخلات الخاصة بك.';
-            document.body.prepend(devBanner);
-            
-            // تعديل التباعد لمراعاة الشريط الإضافي
-            document.querySelector('main').classList.remove('pt-16');
-            document.querySelector('main').classList.add('pt-20');
-        }
     </script>
 </body>
 </html>
